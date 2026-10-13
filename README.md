@@ -8,7 +8,7 @@
 
 ### 🔐 Demo Administrator Login
 The protected CRM dashboard is accessible at `/admin`:
-- **Admin Portal URL**: `https://ethixweb-india.vercel.app/admin` *(or `http://localhost:5173/admin` locally)*
+- **Admin Portal URL**: `http://localhost:5173/admin`
 - **Email**: `admin@ethixweb.com`
 - **Password**: `EthixAdmin@2026`
 
@@ -163,79 +163,3 @@ All protected endpoints require an `Authorization: Bearer <token>` header.
 | `POST` | `/api/leads/:id/notes` | Admin | Attach dated internal note to lead record |
 | `GET` | `/api/leads/export/csv` | Admin | Download safe, formula-sanitized CSV export of all leads |
 | `DELETE`| `/api/leads/:id` | Admin | Permanently remove lead from CRM |
-
----
-
-
-## 🧪 Automated Testing
-
-The backend includes a comprehensive 10-step automated smoke test suite:
-
-```bash
-cd backend
-node run-tests.js
-```
-
-### Test Coverage:
-1. `GET /api/health`: Operational status and database connectivity
-2. `POST /api/leads` (Valid): Lead submission with +91 phone verification
-3. `POST /api/leads` (Honeypot): Stealth HTTP 200 response for bot trap
-4. `POST /api/leads` (Phone Validation): Rejection of malformed numbers
-5. `POST /api/auth/login`: Administrator authentication and JWT generation
-6. `GET /api/leads` (Unauthenticated): Proper 401 Unauthorized rejection
-7. `GET /api/leads` (Authorized): Fetch leads with Bearer token and metrics
-8. `POST /api/leads/:id/notes`: Add internal timestamped follow-up note
-9. `PATCH /api/leads/:id/status`: Update lead status in CRM
-10. `GET /api/leads/export/csv`: Safe CSV download with formula injection sanitization
-
----
-
-## 🚀 Cloud Deployment Guide
-
-### Step 1: MongoDB Atlas (Database)
-1. Create a free cluster on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
-2. Under **Security → Network Access**, add `0.0.0.0/0` (Allow Access from Anywhere) so Render dynamic IPs can connect.
-3. Under **Database → Connect**, copy your connection string:
-   `mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/ethixweb_india?retryWrites=true&w=majority`
-
-### Step 2: Backend on Render
-1. In [Render Dashboard](https://dashboard.render.com/), create a new **Web Service** from your GitHub repository.
-2. Settings:
-   - **Root Directory**: `backend`
-   - **Build Command**: `npm install`
-   - **Start Command**: `npm start`
-3. Environment Variables:
-   - `NODE_ENV`: `production`
-   - `MONGODB_URI`: *Your MongoDB connection string from Step 1*
-   - `JWT_SECRET`: *A secure random string*
-   - `ADMIN_EMAIL`: `admin@ethixweb.com`
-   - `ADMIN_PASSWORD`: `EthixAdmin@2026`
-   - `FRONTEND_URL`: *Your Vercel URL, e.g. https://ethixweb-india.vercel.app*
-
-### Step 3: Frontend on Vercel
-1. In [Vercel](https://vercel.com/), import the repository.
-2. Settings:
-   - **Root Directory**: `frontend`
-   - **Framework Preset**: `Vite`
-3. Environment Variables:
-   - `VITE_API_URL`: *Your live Render URL (e.g. `https://ethixweb-india-backend.onrender.com`)*
-   - `VITE_WHATSAPP_NUMBER`: `919876543210`
-   - `VITE_CONTACT_EMAIL`: `india@ethixweb.com`
-4. Click **Deploy**. Vercel will build the SPA using `vercel.json` within seconds.
-
----
-
-## 🔮 Scope, Limitations & Future Roadmap
-
-### Current Scope
-This platform is a concept redesign of Ethixweb engineered to showcase how a global digital operations model can be tailored to Indian market dynamics. All case studies, client reviews, and pricing packages reflect concept delivery models.
-
-### Future Roadmap (With Additional Development Time)
-1. **Multi-Lingual Localization**: Implement a lightweight vernacular toggle (Hindi, Tamil, Marathi) for Tier 2/3 business hubs.
-2. **WhatsApp Cloud API Webhooks**: Bi-directional integration allowing incoming WhatsApp messages from clients to automatically thread into the `/admin` lead notes.
-3. **Razorpay Sandbox Checkout**: Live interactive deposit checkout for sprint bookings with automated GSTIN validation via the government GST API.
-4. **OTP-Based Authentication**: Indian mobile OTP login for enterprise clients alongside standard JWT administrator access.
-
----
-
-*© Ethixweb India — Digital Engineering & Growth Operations.*
