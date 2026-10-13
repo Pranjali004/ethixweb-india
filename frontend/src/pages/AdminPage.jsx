@@ -295,9 +295,9 @@ export default function AdminPage() {
             </button>
           </form>
 
-          {/* Reviewer Note */}
+          {/* Demo Credentials Note */}
           <div className="p-3 rounded-lg bg-ethix-card/60 border border-ethix-border text-[11px] text-slate-400 space-y-1">
-            <span className="font-semibold text-slate-200 block">Assessment Reviewer Demo Access:</span>
+            <span className="font-semibold text-slate-200 block">Demo Administrator Access:</span>
             <div>Email: <code className="text-rose-300 font-mono">admin@ethixweb.com</code></div>
             <div>Password: <code className="text-rose-300 font-mono">EthixAdmin@2026</code></div>
           </div>
