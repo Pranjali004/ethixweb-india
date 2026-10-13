@@ -4,14 +4,7 @@
 
 ---
 
-## 🌐 Live URLs & Demo Access
 
-| Resource | Link / Details |
-| :--- | :--- |
-| **Live Web Application (Vercel)** | [https://ethixweb-india.vercel.app](https://ethixweb-india.vercel.app) *(or your deployed Vercel URL)* |
-| **Live Backend API (Render)** | [https://ethixweb-india-backend.onrender.com](https://ethixweb-india-backend.onrender.com) |
-| **API Health Check** | [https://ethixweb-india-backend.onrender.com/api/health](https://ethixweb-india-backend.onrender.com/api/health) |
-| **Public GitHub Repository** | [https://github.com/YOUR_USERNAME/ethixweb-india](https://github.com/YOUR_USERNAME/ethixweb-india) |
 
 ### 🔐 Demo Administrator Login
 The protected CRM dashboard is accessible at `/admin`:
@@ -173,67 +166,6 @@ All protected endpoints require an `Authorization: Bearer <token>` header.
 
 ---
 
-## 💻 Local Setup & Environment Variables
-
-### Prerequisites
-- Node.js v18+ (tested on Node v24)
-- npm v9+
-
-### 1. Installation
-```bash
-# Clone the repository
-git clone https://github.com/YOUR_USERNAME/ethixweb-india.git
-cd ethixweb-india
-
-# Install backend dependencies
-cd backend
-npm install
-
-# Install frontend dependencies
-cd ../frontend
-npm install
-```
-
-### 2. Environment Variables Table
-
-#### Backend (`backend/.env`):
-| Variable | Required | Example / Description |
-| :--- | :---: | :--- |
-| `PORT` | Optional | `5000` (defaults to 5000) |
-| `NODE_ENV` | Yes | `development` or `production` |
-| `FRONTEND_URL` | Yes | `http://localhost:5173,https://ethixweb-india.vercel.app` |
-| `MONGODB_URI` | Yes | `mongodb+srv://<user>:<password>@cluster0.mongodb.net/ethixweb_india` |
-| `JWT_SECRET` | Yes | `super_secret_jwt_key_india_2026` |
-| `ADMIN_EMAIL` | Yes | `admin@ethixweb.com` |
-| `ADMIN_PASSWORD` | Yes | `EthixAdmin@2026` (or use `ADMIN_PASSWORD_HASH`) |
-| `WHATSAPP_NUMBER`| Optional | `919876543210` |
-| `CONTACT_EMAIL` | Optional | `india@ethixweb.com` |
-
-#### Frontend (`frontend/.env`):
-| Variable | Required | Example / Description |
-| :--- | :---: | :--- |
-| `VITE_API_URL` | Yes | `http://localhost:5000` (or your Render URL in production) |
-| `VITE_WHATSAPP_NUMBER` | Optional | `919876543210` |
-| `VITE_CONTACT_EMAIL` | Optional | `india@ethixweb.com` |
-
-### 3. Run Locally
-Open two terminal windows:
-
-Terminal 1 (Backend API):
-```bash
-cd backend
-npm start
-# Live on http://localhost:5000
-```
-
-Terminal 2 (Frontend Client):
-```bash
-cd frontend
-npm run dev
-# Live on http://localhost:5173
-```
-
----
 
 ## 🧪 Automated Testing
 
