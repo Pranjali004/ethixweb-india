@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment Variables
+.env
+.env.*
+!.env.example
+*.local
+
+# Build Outputs
+dist/
+dist-ssr/
+build/
+*/dist/
+
+# Database files & local cache
+*.db
+*.sqlite
+data/
+*.log
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
